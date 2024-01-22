@@ -47,6 +47,24 @@ describe('TennisScore', () => {
       expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('av')
       expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('40')
     })
+
+    it('should go back to deuce when the player without advantage scores a point', () => {
+      const wrapper = mount(TennisScore)
+      wrapper.getComponent(TennisScore).vm.scorePlayerOne = 'av'
+      wrapper.getComponent(TennisScore).vm.scorePlayerTwo = '40'
+
+      wrapper.getComponent(TennisScore).vm.addPoint(2)
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('40')
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('40')
+
+      wrapper.getComponent(TennisScore).vm.addPoint(1)
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('av')
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('40')
+
+      wrapper.getComponent(TennisScore).vm.addPoint(2)
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('40')
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('40')
+    })
   })
 
   describe('isDeuce', () => {

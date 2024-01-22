@@ -124,5 +124,14 @@ describe('TennisScore', () => {
       await wrapper.find('[data-test="player2-add"]').trigger('click')
       expect(wrapper.find('[data-test="score"]').text()).toContain('15 - 15')
     })
+
+    it('should display winner', async () => {
+      const wrapper = mount(TennisScore)
+      wrapper.getComponent(TennisScore).vm.scorePlayerOne = 'av'
+      wrapper.getComponent(TennisScore).vm.scorePlayerTwo = '40'
+
+      await wrapper.find('[data-test="player1-add"]').trigger('click')
+      expect(wrapper.find('[data-test="winner"]').text()).toContain('Player 1 Wins !')
+    })
   })
 })

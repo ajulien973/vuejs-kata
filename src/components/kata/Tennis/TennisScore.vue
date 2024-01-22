@@ -43,7 +43,8 @@ const addPoint = player => {
 <template>
   <div>
     <h1>Tennis Kata Score</h1>
-    <p data-test="score">{{ scorePlayerOne }} - {{ scorePlayerTwo }}</p>
+    <p v-if="winner" data-test="winner">{{winner}} Wins !</p>
+    <p v-else data-test="score">{{ scorePlayerOne }} - {{ scorePlayerTwo }}</p>
     <button data-test="player1-add" @click="addPoint(1)">Add Player 1</button>
     <button data-test="player2-add" @click="addPoint(2)">Add Player 2</button>
   </div>

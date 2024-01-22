@@ -18,7 +18,6 @@ const addPoint = player => {
   let playerScore = player === 1 ? scorePlayerOne : scorePlayerTwo
   let opponentScore = player === 1 ? scorePlayerTwo : scorePlayerOne
 
-  let nextIndex = availablePoints.indexOf(playerScore.value) + 1
   const winningState1 = !isDeuce() && !isAdvantage() && playerScore.value === availablePoints[3]
   const winningState2 = playerScore.value === availablePoints[4]
   if (winningState1 || winningState2) {
@@ -34,7 +33,8 @@ const addPoint = player => {
     opponentScore.value = availablePoints[3];
     return;
   }
-  playerScore.value = availablePoints[nextIndex]
+  let nextScoreIndex = availablePoints.indexOf(playerScore.value) + 1
+  playerScore.value = availablePoints[nextScoreIndex]
 }
 
 </script>

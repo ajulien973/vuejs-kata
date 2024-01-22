@@ -29,7 +29,7 @@ describe('TennisScore', () => {
     })
 
     describe('winning state : when player has 40 and state is not deuce', () => {
-      it('should reset both players points ', () => {
+      it('should reset both players points and set winner', () => {
         const wrapper = mount(TennisScore)
         wrapper.getComponent(TennisScore).vm.scorePlayerOne = '40'
         wrapper.getComponent(TennisScore).vm.scorePlayerTwo = '15'
@@ -37,11 +37,13 @@ describe('TennisScore', () => {
         wrapper.getComponent(TennisScore).vm.addPoint(1)
         expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('love')
         expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('love')
+        expect(wrapper.getComponent(TennisScore).vm.winner).toBe('Player 1')
+
       })
     })
 
     describe('winning state : when player has advantage', () => {
-      it('should reset both players points ', () => {
+      it('should reset both players points and set winner', () => {
         const wrapper = mount(TennisScore)
         wrapper.getComponent(TennisScore).vm.scorePlayerOne = 'av'
         wrapper.getComponent(TennisScore).vm.scorePlayerTwo = '40'
@@ -49,6 +51,7 @@ describe('TennisScore', () => {
         wrapper.getComponent(TennisScore).vm.addPoint(1)
         expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('love')
         expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('love')
+        expect(wrapper.getComponent(TennisScore).vm.winner).toBe('Player 1')
       })
     })
 

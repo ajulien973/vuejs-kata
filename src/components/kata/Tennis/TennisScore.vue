@@ -3,6 +3,7 @@ import {ref} from "vue";
 
 let scorePlayerOne = ref('love');
 let scorePlayerTwo = ref('love');
+let winner = ref('');
 
 const availablePoints = ['love', '15', '30', '40', 'av'];
 
@@ -21,6 +22,7 @@ const addPoint = player => {
   const winningState1 = !isDeuce() && !isAdvantage() && playerScore.value === availablePoints[3]
   const winningState2 = playerScore.value === availablePoints[4]
   if (winningState1 || winningState2) {
+    winner.value = player === 1 ? 'Player 1' : 'Player 2'
     scorePlayerOne.value = availablePoints[0]
     scorePlayerTwo.value = availablePoints[0]
     return;

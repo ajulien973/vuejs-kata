@@ -7,6 +7,11 @@ let scorePlayerTwo = ref('love');
 const isDeuce = () => {
   return scorePlayerOne.value === '40' && scorePlayerTwo.value === '40';
 }
+
+const isAdvantage = () => {
+  return scorePlayerOne.value === 'av' || scorePlayerTwo.value === 'av';
+}
+
 const addPoint = player => {
   const availablePoints = ['love', '15', '30', '40', 'av'];
   let playerScore = player === 1 ? scorePlayerOne : scorePlayerTwo

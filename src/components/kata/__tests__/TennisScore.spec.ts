@@ -57,4 +57,17 @@ describe('TennisScore', () => {
       expect(wrapper.getComponent(TennisScore).vm.isDeuce()).toBe(true)
     })
   })
+
+  describe('isAdvantage', () => {
+    it('should be true when one player has av', () => {
+      const wrapper = mount(TennisScore)
+      wrapper.getComponent(TennisScore).vm.scorePlayerOne = 'av'
+      wrapper.getComponent(TennisScore).vm.scorePlayerTwo = '40'
+      expect(wrapper.getComponent(TennisScore).vm.isAdvantage()).toBe(true)
+
+      wrapper.getComponent(TennisScore).vm.scorePlayerOne = '40'
+      wrapper.getComponent(TennisScore).vm.scorePlayerTwo = 'av'
+      expect(wrapper.getComponent(TennisScore).vm.isAdvantage()).toBe(true)
+    })
+  })
 })

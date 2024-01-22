@@ -1,4 +1,8 @@
 <script setup>
+import {ref} from "vue";
+
+let scorePlayerOne = ref('love');
+let scorePlayerTwo = ref('love');
 
 </script>
 

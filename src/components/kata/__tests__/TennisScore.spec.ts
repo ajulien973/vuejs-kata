@@ -8,4 +8,10 @@ describe('TennisScore', () => {
     const wrapper = mount(TennisScore)
     expect(wrapper.text()).toContain('Tennis Kata')
   })
+
+  it('Sets default score', () => {
+    const wrapper = mount(TennisScore)
+    expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('love')
+    expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('love')
+  })
 })

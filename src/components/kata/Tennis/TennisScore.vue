@@ -40,7 +40,10 @@ const addPoint = player => {
 
 <template>
   <div>
-    <h1>Tennis Kata</h1>
+    <h1>Tennis Kata Score</h1>
+    <p data-test="score">{{ scorePlayerOne }} - {{ scorePlayerTwo }}</p>
+    <button data-test="player1-add" @click="addPoint(1)">Add Player 1</button>
+    <button data-test="player2-add" @click="addPoint(2)">Add Player 2</button>
   </div>
 </template>
 

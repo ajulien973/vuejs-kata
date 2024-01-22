@@ -106,4 +106,20 @@ describe('TennisScore', () => {
       expect(wrapper.getComponent(TennisScore).vm.isAdvantage()).toBe(true)
     })
   })
+
+  describe('display', () => {
+    it('should display current score', () => {
+      const wrapper = mount(TennisScore)
+      expect(wrapper.find('[data-test="score"]').text()).toContain('love - love')
+    })
+
+    it('should add point to player one', async () => {
+      const wrapper = mount(TennisScore)
+
+      await wrapper.find('[data-test="player1-add"]').trigger('click')
+      expect(wrapper.find('[data-test="score"]').text()).toContain('15 - love')
+      await wrapper.find('[data-test="player2-add"]').trigger('click')
+      expect(wrapper.find('[data-test="score"]').text()).toContain('15 - 15')
+    })
+  })
 })

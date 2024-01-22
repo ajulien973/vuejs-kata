@@ -37,6 +37,16 @@ describe('TennisScore', () => {
       expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('love')
       expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('love')
     })
+
+    it('should give advantage to the player that scores a point when status is deuce', () => {
+      const wrapper = mount(TennisScore)
+      wrapper.getComponent(TennisScore).vm.scorePlayerOne = '40'
+      wrapper.getComponent(TennisScore).vm.scorePlayerTwo = '40'
+
+      wrapper.getComponent(TennisScore).vm.addPoint(1)
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('av')
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('40')
+    })
   })
 
   describe('isDeuce', () => {

@@ -8,13 +8,17 @@ const isDeuce = () => {
   return scorePlayerOne.value === '40' && scorePlayerTwo.value === '40';
 }
 const addPoint = player => {
-  const availablePoints = ['love', '15', '30', '40'];
+  const availablePoints = ['love', '15', '30', '40', 'av'];
   let playerScore = player === 1 ? scorePlayerOne : scorePlayerTwo
 
   let nextIndex = availablePoints.indexOf(playerScore.value) + 1
   if (!isDeuce() && playerScore.value === availablePoints[3]) {
     scorePlayerOne.value = availablePoints[0]
     scorePlayerTwo.value = availablePoints[0]
+    return;
+  }
+  if (isDeuce()) {
+    playerScore.value = availablePoints[4];
     return;
   }
   playerScore.value = availablePoints[nextIndex]

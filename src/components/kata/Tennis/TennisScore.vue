@@ -36,7 +36,6 @@ const addPoint = player => {
   let nextScoreIndex = availablePoints.indexOf(playerScore.value) + 1
   playerScore.value = availablePoints[nextScoreIndex]
 }
-
 </script>
 
 <template>

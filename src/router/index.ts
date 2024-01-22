@@ -20,7 +20,7 @@ const router = createRouter({
     {
       path: '/kata',
       name: 'kata',
-      component: () => import('../components/kata/FizzBuzz/FizzBuzz.vue')
+      component: () => import('../components/kata/Tennis/TennisScore.vue')
     }
   ]
 })

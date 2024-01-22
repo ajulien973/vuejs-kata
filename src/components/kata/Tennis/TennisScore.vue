@@ -4,6 +4,9 @@ import {ref} from "vue";
 let scorePlayerOne = ref('love');
 let scorePlayerTwo = ref('love');
 
+const isDeuce = () => {
+  return scorePlayerOne.value === '40' && scorePlayerTwo.value === '40';
+}
 const addPoint = player => {
   const availablePoints = ['love', '15', '30', '40'];
   let playerScore = player === 1 ? scorePlayerOne : scorePlayerTwo

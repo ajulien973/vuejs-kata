@@ -4,16 +4,17 @@ import {ref} from "vue";
 let scorePlayerOne = ref('love');
 let scorePlayerTwo = ref('love');
 
+const availablePoints = ['love', '15', '30', '40', 'av'];
+
 const isDeuce = () => {
-  return scorePlayerOne.value === '40' && scorePlayerTwo.value === '40';
+  return scorePlayerOne.value === availablePoints[3] && scorePlayerTwo.value === availablePoints[3];
 }
 
 const isAdvantage = () => {
-  return scorePlayerOne.value === 'av' || scorePlayerTwo.value === 'av';
+  return scorePlayerOne.value === availablePoints[4] || scorePlayerTwo.value === availablePoints[4];
 }
 
 const addPoint = player => {
-  const availablePoints = ['love', '15', '30', '40', 'av'];
   let playerScore = player === 1 ? scorePlayerOne : scorePlayerTwo
   let opponentScore = player === 1 ? scorePlayerTwo : scorePlayerOne
 

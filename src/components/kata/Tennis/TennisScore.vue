@@ -12,6 +12,11 @@ const addPoint = player => {
   let playerScore = player === 1 ? scorePlayerOne : scorePlayerTwo
 
   let nextIndex = availablePoints.indexOf(playerScore.value) + 1
+  if (!isDeuce() && playerScore.value === availablePoints[3]) {
+    scorePlayerOne.value = availablePoints[0]
+    scorePlayerTwo.value = availablePoints[0]
+    return;
+  }
   playerScore.value = availablePoints[nextIndex]
 }
 

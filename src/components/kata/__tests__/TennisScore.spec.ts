@@ -27,6 +27,16 @@ describe('TennisScore', () => {
       wrapper.getComponent(TennisScore).vm.addPoint(1)
       expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('40')
     })
+
+    it('should reset both players points if one player goes after 40 and state is not deuce', () => {
+      const wrapper = mount(TennisScore)
+      wrapper.getComponent(TennisScore).vm.scorePlayerOne = '40'
+      wrapper.getComponent(TennisScore).vm.scorePlayerTwo = '15'
+
+      wrapper.getComponent(TennisScore).vm.addPoint(1)
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerOne).toBe('love')
+      expect(wrapper.getComponent(TennisScore).vm.scorePlayerTwo).toBe('love')
+    })
   })
 
   describe('isDeuce', () => {
